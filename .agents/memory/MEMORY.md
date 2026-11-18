@@ -1,0 +1,1 @@
+- [Mairie d’Agou site scope](agou-site-scope.md) — The site is intended for official municipal use.

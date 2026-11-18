@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Mairie d’Agou"
+description = "Site officiel de la Commune d’Agou : informations municipales, démarches, actualités locales et présentation du maire et du territoire."
+version = "1.0.0"
+id = "artifacts/mairie-agou"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25908
+
+[services.development]
+run = "pnpm --filter @workspace/mairie-agou run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mairie-agou", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/mairie-agou/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25908"
+BASE_PATH = "/"
